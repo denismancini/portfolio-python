@@ -5,14 +5,12 @@ import os
 st.set_page_config(page_title="Portfólio - Denis Mancini", page_icon="👨‍💻", layout="wide")
 
 # ==========================================
-# INJEÇÃO DE CSS (ESTILO MINIMALISTA + FONT AWESOME)
+# INJEÇÃO DE CSS (ESTILO MINIMALISTA + RESPONSIVIDADE)
 # ==========================================
 estilo_css = """
-<!-- Importação da biblioteca de ícones Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* Força a fonte monospace (estilo máquina de escrever) e fundo branco */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
 
 html, body, [class*="css"] {
@@ -21,50 +19,42 @@ html, body, [class*="css"] {
     color: #555555;
 }
 
-/* Oculta elementos padrão do Streamlit */
 header {visibility: hidden;}
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 
-/* Container principal ajustado para centralizar o conteúdo */
 .main .block-container {
     padding-top: 2rem;
     max-width: 1000px; 
     margin: 0 auto;
 }
 
-/* ========================================== */
-/* ESTILOS DO NOVO MENU COM ÍCONES            */
-/* ========================================== */
 .nav-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 35px; /* Espaço entre cada rede social */
+    gap: 35px; 
     margin-bottom: 80px;
     margin-top: 10px;
 }
 .nav-link {
     display: flex;
     align-items: center;
-    gap: 8px; /* Espaço entre o ícone e o texto */
-    color: #888888; /* Cor cinza azulada do texto */
+    gap: 8px; 
+    color: #888888; 
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 .nav-link i {
-    font-size: 1.6rem; /* Tamanho do ícone */
-    color: #666666; /* Cor cinza mais escura para o ícone dar contraste */
+    font-size: 1.6rem; 
+    color: #666666; 
     transition: all 0.3s ease;
 }
 .nav-link:hover, .nav-link:hover i {
-    color: #000000; /* Fica preto ao passar o mouse */
+    color: #000000; 
 }
 
-/* ========================================== */
-/* RESTANTE DOS ESTILOS                       */
-/* ========================================== */
 .hero-pre {
     text-align: center;
     font-size: 1.1rem;
@@ -131,6 +121,32 @@ footer {visibility: hidden;}
     aspect-ratio: 1 / 1;
     border-radius: 2px;
 }
+
+/* ========================================== */
+/* AJUSTES PARA TELEMÓVEL (RESPONSIVIDADE)    */
+/* ========================================== */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem; /* Reduz o nome gigante */
+    }
+    .hero-subtitle {
+        font-size: 0.95rem; /* Reduz um pouco o subtítulo */
+    }
+    .nav-menu {
+        gap: 15px; /* Junta mais os ícones sociais */
+        flex-wrap: wrap; /* Permite quebrar a linha se o ecrã for muito estreito */
+        margin-bottom: 40px;
+    }
+    .nav-link {
+        font-size: 0.85rem;
+    }
+    .nav-link i {
+        font-size: 1.3rem;
+    }
+    .btn-email {
+        width: 200px;
+    }
+}
 </style>
 """
 st.markdown(estilo_css, unsafe_allow_html=True)
@@ -138,9 +154,8 @@ st.markdown(estilo_css, unsafe_allow_html=True)
 diretorio_atual = os.path.dirname(os.path.abspath(__file__))
 
 # ==========================================
-# 1. MENU DE NAVEGAÇÃO (ATUALIZADO)
+# 1. MENU DE NAVEGAÇÃO
 # ==========================================
-# Inseri o YouTube para ficar idêntico ao seu print. Se não tiver um canal, basta apagar a linha dele.
 st.markdown("""
 <div class='nav-menu'>
     <a href='https://www.linkedin.com/in/denis-mancini/' target='_blank' class='nav-link'>
@@ -159,7 +174,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 2. HERO SECTION (CENTRALIZADO)
+# 2. HERO SECTION
 # ==========================================
 st.markdown("""
 <div class='hero-pre'>Oi, tudo bem? Eu sou o</div>
